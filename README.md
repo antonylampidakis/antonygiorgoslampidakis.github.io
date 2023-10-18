@@ -7,17 +7,17 @@ https://antonylampidakis.github.io/antonygiorgoslampidakis.github.io
    - Ημερομηνια γέννησης : 19 Ιουλιου 2004
    - Τόπος γένησεις : Μαρούσι
    - Αδεια οδηγησης : B κατηγοριας
-   - 
+   - B2 LOWER (Αγγλικων)
 
 * Βασικοι τροποι επικοινωνιας :
 
 A) Επικοινωνία μεσο email :
-  1) antonylampidakis@gmail.com
-  2) sdi2200088@di.uoa.gr
+  * antonylampidakis@gmail.com
+  *  sdi2200088@di.uoa.gr
 
 B) Επικοινωνια μεσο sosial media :
-  1) Facebook : Αντωνης Λαμπιδακης
-  2) instagram :  @antonislampidakis
+  * Facebook : Αντωνης Λαμπιδακης
+  *  instagram :  @antonislampidakis
 
 * Εκπαίδευση :
     - Τμήμα πληροφορικής και τηλεπικοινωνίων 2022-Σήμερα
@@ -27,4 +27,11 @@ B) Επικοινωνια μεσο sosial media :
     - 4 νηπιαγωγείο Χολαργού 2009-2010
     - 1ος Βρεφονηπιακός Σταθμός Χολαργού 
 
-    
+* χομπι και ενδιαφεροντα : 
+     -   Φωτογραφια
+     -   Drone
+     -   video
+     -   video editing
+     -   Εθελοντης Δασοπιροσβεστης (ΔΑΠΑΧΟ Δασοπροστασια Παπαγου Χολαργου)
+     -   Motosports
+     -   
