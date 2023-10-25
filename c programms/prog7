@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    double kw, c, t;
+
+
+	printf("Dose tin katanalosi soy :\n");
+	scanf("%lf",&kw);
+
+	while( kw>0){
+
+	if (kw>1 && kw<=100 ){	c=(kw*0.24);	}
+
+	else if (kw>101 && kw<=200){ c=(kw*0.36);  }
+
+	else {   c=(kw*0.44);   }
+
+	t=c+(c*0.24);
+
+	printf("To synolo einai : %lf\n",t);
+	printf("***********************************\n");
+
+
+	printf("Dose tin katanalosi soy :\n");
+	scanf("%lf",&kw);
+
+	}
+
+	return 0;
+}
