@@ -1,1 +1,13 @@
+#include <stdio.h>
+#include <stdlib.h>
 
+int main()
+{
+   	printf("Antonis\n");
+    printf ("Foitis a etous\n");
+    printf ("18 xronon\n");
+    printf ("Alphoto.com\n");
+    printf ("Pliroforiki ekpa\n");
+
+    return 0;
+}
