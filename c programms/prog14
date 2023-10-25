@@ -1,0 +1,60 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int i=0 ,sms ,csms ;
+	double m ,cm ,tc ,s ;
+
+
+	while (i<100){
+
+		printf("Dose ta sms soy : \n");
+		scanf("%d",&sms);
+
+		printf("Dose ta lepta soy : \n");
+		scanf("%lf",& m);
+
+		if (sms>1 && sms<=100)
+		{
+			csms=(sms*0.11)	;
+		}
+
+		else if (sms>101 && sms<=200)
+		{
+			csms=(sms*0.15);
+		}
+
+		else{
+			csms=(sms*0.17);
+		}
+
+		if (m>1 && m<=100)
+		{
+			cm=(m*0.22);
+		}
+
+		else if (m>101 && m<=200)
+		{
+			cm=(m*0.25);
+		}
+
+		else
+		{
+			cm=(m*0.28);
+		}
+
+
+	s=(cm+csms);
+	tc=(s+(s*0.24));
+	printf("To synolo einai : %lf\n",tc);
+	printf("*************************************\n");
+
+
+	i++;
+	}
+
+
+
+	return 0;
+}
