@@ -1,0 +1,26 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    double a, b, pro, af, pol, di;
+
+	printf("Dose 1o arithmo: \n");
+	scanf("%lf",&a);
+
+	printf("Dose 2o arithmo: \n");
+	scanf("%lf",&b);
+
+	pro=a+b;
+	af=a-b;
+	pol=a*b;
+	di=a/b;
+
+	printf("To apotelesma tis prosthesis :%lf\n",pro);
+	printf("To apotelesma tis aferesis :%lf\n",af);
+	printf("To apotelesma toy polaplasiasmoy :%lf\n",pol);
+	printf("To apotelesma tis dieresis :%lf\n",di);
+
+
+	return 0;
+}
