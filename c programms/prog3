@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int sms, csms, i;
+	double m, cm, tc, t;
+
+	for ( i=0; i<10; i++){
+
+
+	printf ("Dose ta sms soy :\n");
+	scanf("%lf",&sms);
+
+	printf("Dose ta lepta omilias: \n");
+	scanf("%lf",&m);
+
+	csms=(sms*0.2);
+	cm=(m*0,12);
+
+
+	tc=(csms+cm);
+
+	t=tc + (0.24*tc);
+
+	printf("O logariasmos einai : %lf\n",t);
+	printf("*************************************\n");
+
+
+}
+	return 0;
+}
