@@ -1,0 +1,18 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+     double y;
+
+    for (double x=-100; x<=100; x=0.01){
+
+        y=(3*x)-11;
+
+        printf("To apotelesa einai: %lf \n", y);
+        printf("***********************************\n");
+
+    }
+
+    return 0;
+}
