@@ -1,0 +1,51 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    double x ,f ;
+	int i ;
+
+
+	for (i=-20; i<20; i++){
+
+	if (x>=-8 && x<=-2)
+	{
+		f=((12*x)-4 );
+			printf("To apotelesma einai : %lf\n",f);
+			printf("********************************\n");
+	}
+
+	else if (x==-1)
+	{
+		f=(123*x);
+		printf("To apotelesma einai : %lf\n",f);
+		printf("********************************\n");
+	}
+
+	else if (x==0)
+	{
+		f=-1;
+			printf("To apotelesma einai : %lf\n",f);
+			printf("********************************\n");
+	}
+
+	else if (x>1)
+	{
+		f=((4*x)-12);
+			printf("To apotelesma einai : %lf\n",f);
+			printf("********************************\n");
+	}
+
+	else
+	{
+		printf("Eistai ektos paidioy orismou , den orizete \n");
+		printf("***********************************************\n");
+	}
+
+}//for
+
+	return 0;
+
+
+}
