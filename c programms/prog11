@@ -1,0 +1,66 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+
+
+	int c, p ;
+	double kg, ct, tc ;
+
+	printf("Dose katigoria agoras: (1,2,3) \n");
+	scanf("%d",&c);
+
+	while( c==1 || c==2 || c==3 ){
+
+	if (c==1){
+
+		printf("Dose ta kila : \n");
+		scanf("%lf",&kg);
+
+		if (kg>1 && kg<=1000){
+			ct=(kg*0.22);
+		}
+		else if (kg>1001 && kg<=2000){
+			ct=(kg*0.25);
+		}
+		else {
+			ct=(kg*0.27);
+		}
+	}
+	else if (c==2){
+
+		printf("Dose temaxia : \n");
+		scanf("%d",&p);
+
+		if (p>1 && p<=1000){
+			ct=(p*0.36);
+		}
+		else if (p>1001 && p<=2000){
+			ct=(p*0.48);
+		}
+		else {
+			ct=(p*0.60);
+		}
+	}
+	else {
+		printf("Agora mono enos temaxioy sta 10 eyro \n");
+		ct=10;
+	}
+
+
+
+	tc=(ct+(ct*0.24));
+
+	printf("To synolo einai : %lf \n",tc);
+	printf("***************************************\n");
+
+	printf("Dose katigoria agoras: (1,2,3) \n");
+	scanf("%d",&c);
+
+
+
+}
+
+	return 0;
+}
