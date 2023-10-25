@@ -1,0 +1,41 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    double a, b, p, af, g, f ;
+	int i;
+	for (i=0; i<100 ; i++){
+
+
+	printf("Dose proto arithmo : \n");
+	scanf("%lf",&a);
+
+	printf("Dose deytero arithmo : \n");
+	scanf("%lf",&b);
+
+	p=(a+b);
+
+	af=(a-b);
+
+	g=(a*b);
+
+	printf("To athrisma einai : %lf\n",p);
+
+	printf("I diafora  einai : %lf\n",af);
+
+	printf("To ginomeno einai : %lf\n",g);
+
+
+	if (b!=0)
+			{ f=(a/b);
+
+				printf("To piliko einai : %lf\n",f);  }
+
+	else {	printf("Adinati i diairesi!!! \n"); }
+
+	printf("********************************\n");
+}
+
+	return 0;
+}
