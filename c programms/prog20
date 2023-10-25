@@ -1,0 +1,23 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    double p=3.14 ,r ,em ,pe;
+    int i;
+
+    for (i=0; i<=1000; i++){
+        printf("Dose tin aktina: \n");
+        scanf("%lf",&r);
+
+        em=(p*(r*r));
+        pe=(2*p*r);
+
+        printf("To embadon einai : %lf\n",em);
+        printf("I perimetros einai : %lf\n",pe);
+        printf("**********************************\n");
+    }
+
+
+    return 0;
+}
