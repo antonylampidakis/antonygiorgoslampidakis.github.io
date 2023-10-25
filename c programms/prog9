@@ -1,0 +1,34 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    double a,b;
+	int i=0;
+
+
+	while (i<100){
+
+
+	printf("Dose ton proto arithmo : \n");
+	scanf("%lf",&a);
+	printf("Dose ton deytero arithmo : \n");
+	scanf("%lf",&b);
+
+	if (a>b)
+	{
+	printf("O A einai megaliteros\n");
+	}
+	else if (b>a){
+		printf("O b einai megaluteros\n");
+	}
+	else {
+		printf("O a kai o b einai isoi\n");
+	}
+	printf("*****************************************\n");
+
+	i++;
+	}
+
+	return 0;
+}
