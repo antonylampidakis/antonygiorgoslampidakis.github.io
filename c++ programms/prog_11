@@ -1,0 +1,107 @@
+#include <iostream>
+#include <fstream>
+#include <string.h>
+#include <stdlib.h>
+
+using namespace::std;
+
+class SMG3{
+
+public:
+
+    //dimioyrgos erimin
+    SMG3(){
+        price=0.0;
+        freq=0.0;
+    }
+
+    //dimiourgos
+    SMG3(double _price, double _freq){
+        price=_price;
+        freq=_freq;
+    }
+
+    //methodoi geters
+    double getprice(){return price;};
+    double getfreq(){return freq;};
+
+    //methodoi setters
+    void setprice(double _price){price=_price;}
+    void setfreq(double _freq){freq=_freq;}
+
+    void display(){
+        cout<<"Price="<<price<<endl;
+        cout<<"Frequency="<<freq<<endl;
+    }
+
+protected:
+    double price;
+    double freq;
+
+
+};
+
+class SMG4 : public SMG3{
+
+public:
+
+    //dimioyrgos
+    SMG4(double _price, double _freq, int _cors, double _ent){
+        price=_price;
+        freq=_freq;
+        cors=_cors;
+        ent=_ent;
+
+    }
+
+    //methodoi geters
+    double getcors(){return cors;};
+    double getent(){return ent;};
+
+    //methodoi setters
+    void setcors(int _cors){cors=_cors;}
+    void setent(int _ent){ent=_ent;}
+
+
+    void display2(){
+        cout<<"Price="<<price<<endl;
+        cout<<"Frequency="<<freq<<endl;
+        cout<<"Cors="<<cors<<endl;
+        cout<<"Energy time="<<ent<<endl;
+    }
+
+    friend ostream & operator <<(ostream& tout, SMG4 i){
+        tout<<"Price :"<<i.price<<endl;
+        tout<<"Frequency :"<<i.freq<<endl;
+        tout<<"Cors :"<<i.cors<<endl;
+        tout<<"Energy time :"<<i.ent<<endl;
+    }
+
+    void print(ostream& tout){
+        tout<<"Price :"<<getprice()<<endl;
+        tout<<"Frequency :"<<getfreq()<<endl;
+        tout<<"cors :"<<getcors()<<endl;
+        tout<<"Energy time:"<<getent()<<endl;
+    }
+
+private:
+    int cors;
+    double ent;
+
+};
+
+int main()
+{
+    SMG3 a(1.2,1.3);
+    SMG4 b(1.7,1.4,4,3.7);
+
+    a.display();
+    cout<<"******************************"<<endl;
+    b.display2();
+    cout<<"******************************"<<endl;
+
+    ofstream f("Results.txt");
+    b.print(f);
+
+    return 0;
+}
