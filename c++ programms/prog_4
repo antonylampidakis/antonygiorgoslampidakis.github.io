@@ -1,0 +1,70 @@
+#include <iostream>
+
+using namespace std;
+
+class Industrial{
+
+private:
+        int codeCust;
+        double pagio;
+        double katan;
+
+public:
+    Industrial(int cc=0, double p=0, double k=0)
+       {
+         int flag=0;
+         if(cc<0){
+            cout<<"Lathos:"<<cc<<" dwste thetikh timh!"<<endl;
+            flag=1;
+        }
+
+         if(p<0){
+            cout<<"Lathos:"<<p<<" dwste thetikh timh!"<<endl;
+            flag=1;
+        }
+
+         if(k<0){
+            cout<<"Lathos:"<<k<<" dwste thetikh timh!"<<endl;
+            flag=1;
+        }
+
+         if(flag==0)
+         {
+          codeCust=cc;
+          pagio=p;
+          katan=k;
+         }
+
+       }
+
+    void display(){
+
+        cout<<"O kodikos einai :"<<codeCust<<endl;
+        cout<<"To pagio einai : "<<pagio<<endl;
+        cout<<"H katanalosi einai : "<<katan<<endl;
+        cout<<"H synolikh xrewsh einai :"<<((0,6*katan)+pagio);
+
+    }
+
+
+
+};
+
+
+int main()
+{
+    Industrial a,b(144,55,183),c(222,-663,-23);
+
+    cout<<endl;
+    a.display();
+
+    cout<<endl;
+    cout<<endl;
+    b.display();
+
+    cout<<endl;
+    cout<<endl;
+    c.display();
+
+    return 0;
+}
