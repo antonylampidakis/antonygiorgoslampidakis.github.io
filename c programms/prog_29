@@ -1,0 +1,37 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+/* run this program using the console pauser or add your own getch, system("pause") or input loop */
+
+int main() {
+
+	double kw ,c ,t;
+
+
+	printf("Dose tin katanalosi soy :\n");
+	scanf("%lf",&kw);
+
+	while( kw>0){
+
+	if (kw>1 && kw<=100 ){	c=(kw*0.24);	}
+
+	else if (kw>101 && kw<=200){ c=(kw*0.36);  }
+
+	else {   c=(kw*0.44);   }
+
+	t=c+(c*0.24);
+
+	printf("to synolo einai : %lf\n",t);
+	printf("***********************************\n");
+
+
+	printf("Dose tin katanalosi soy :\n");
+	scanf("%lf",&kw);
+
+	}
+
+
+
+
+	return 0;
+}
