@@ -1,0 +1,139 @@
+ï»¿// ConsoleApplication18.cpp : This file contains the 'main' function. Program execution begins and ends there.
+//
+
+#include <iostream>
+#include <iostream>
+#include <iomanip>
+#include <stdexcept> // for invalid_argument exception class
+
+using namespace std;
+
+class Time {
+    public:
+
+        Time(); // constructor
+        void setTime(int, int, int); // set hour, minute and second
+        void printUniversal(); // print time in universal-time format
+        void printStandard(); // print time in standard-time format
+
+    private:
+
+        int hour;    // 0 - 23 (24-hour clock format) h
+        int minute; // 0- 59                          m
+        int second; // 0- 59                          s
+
+
+};
+
+//dimioyrgos
+Time::Time()
+{
+    hour = minute = second = 0;
+} // end Time constructor
+
+
+
+// set new Time value using universal time
+void Time::setTime(int h, int m, int s)
+{
+    // validate hour, minute and second
+    if ((h >= 0 && h < 24) && (m >= 0 && m < 60) && (s >= 0 && s < 60))
+    {
+
+        hour = h;
+        minute = m;
+        second = s;
+
+    } // end if
+
+    else
+        throw invalid_argument("hour, minute and/or second was out of range");
+
+} // end function setTime
+
+
+// print Time in universal - time format(HH:MM:SS)
+void Time::printUniversal()
+{
+
+    cout << setfill('0') << setw(2) << hour << ":" << setw(2) << minute << ":" << setw(2) << second;
+
+} // end function printUniversal
+
+
+
+void Time::printStandard()
+{
+
+    cout << ((hour == 0 || hour == 12) ? 12 : hour % 12) << ":" << setfill('0') << setw(2) << minute << ":" << setw(2) << second << (hour < 12 ? " AM" : " PM");
+
+} // end function printStandard
+
+
+//----------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------
+
+int main()
+{
+
+    Time t; // instantiate object t of class Time
+
+    // output Time object t's initial values
+    cout << "The initial universal time is: " << endl;
+    t.printUniversal(); // 00:00:00cout << "\nThe initial standard time is "<<endl;
+    cout << endl;
+    t.printStandard(); // 12:00:00 AM
+    cout<< endl;
+    cout<<"******************************************************"<< endl;
+    cout<<"******************************************************"<< endl;
+
+
+ //----------------------------------------------------------------------------------
+ //----------------------------------------------------------------------------------
+
+    t.setTime(13, 27, 6); // change time
+
+    //output Time object t's new values
+    cout << "\n\nUniversal time after setTime is: " << endl;
+    t.printUniversal(); // 13:27:06
+    cout<< endl;
+    cout<< "******************************************************" << endl;
+    cout<< "******************************************************" << endl;
+    cout << endl;
+    cout << "\nStandard time after setTime is " << endl;
+    t.printStandard(); // 1:27:06 PM
+    cout << endl;
+    cout << "******************************************************" << endl;
+    cout << "******************************************************" << endl;
+
+ //----------------------------------------------------------------------------------
+ //----------------------------------------------------------------------------------
+
+
+    cout << "\nThe initial standard time is " << endl;
+    t.printStandard(); // 12:00:00 AM
+    cout << endl;
+    cout << "******************************************************" << endl;
+    cout << "******************************************************" << endl;
+
+
+    //----------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------
+
+    // attempt to set the time with invalid values
+    try
+    {
+        t.setTime(99, 99, 99); // all values out of range
+    } // end try
+    catch (invalid_argument& e)
+    {
+        cout << "Exception: " << e.what() << endl << endl;
+    } // end catch
+
+    // output t's values after specifying invalid values
+    cout << "\n\nAfter attempting invalid settings:" << "\nUniversal time: " << endl;
+    t.printUniversal(); // 00:00:00
+    cout << "\nStandard time: " << endl;
+    t.printStandard(); // 12:00:00 AM
+    cout << endl;
+}
