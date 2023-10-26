@@ -1,0 +1,133 @@
+
+#include <iostream>
+#include <iomanip>
+
+
+using namespace std;
+
+class SalesPerson
+{
+public:
+
+	static const int monthsPerYear = 12; // months in one year
+
+	SalesPerson(); // constructor
+	void getSalesFromUser(); // input sales from keyboard
+	void setSales(int, double); // set sales fora specific month
+	void printAnnualSales(); // summarize and print sales
+
+
+private:
+	double totalAnnualSales(); // prototype for utility function
+	double sales[monthsPerYear]; // 12 monthly sales figures
+
+}; // end class SalesPerson
+
+
+
+// initialize elements of array sales to 0.0
+SalesPerson::SalesPerson()
+{
+	for (int i = 0; i < monthsPerYear; ++i)
+		sales[i] = 0.0;
+
+} // end SalesPerson constructor
+
+
+//----------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------
+
+
+// set one of the 12 monthly sales figures; function subtracts
+// one from month value for proper subscript in sales array
+void SalesPerson::setSales(int month, double amount)
+{
+	// test for valid month and amount values
+	if (month >= 1 && month <= monthsPerYear && amount > 0)
+
+		sales[month - 1] = amount; // adjust for subscripts 0-11
+
+	else // invalid month or amount value
+
+		cout << "Invalid month or sales figure" << endl;
+
+} // end function setSales
+
+
+//---------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------
+
+
+// get 12 sales figures from the user at the keyboard
+void SalesPerson::getSalesFromUser()
+{
+	double salesFigure;
+
+	for (int i = 1; i <= monthsPerYear; ++i)
+	{
+		cout << "Enter sales amount for month " << i << ": ";
+		cin >> salesFigure;
+
+		setSales(i, salesFigure);
+
+	} // end for
+} // end function getSalesFromUser
+
+
+
+//---------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------
+
+
+// private utility function to total annual sales
+double SalesPerson::totalAnnualSales()
+{
+	double total = 0.0; // initialize total
+
+	for (int i = 0; i < monthsPerYear; ++i) // summarize sales results
+		total += sales[i]; // add month i sales to total
+
+	return total;
+} // end function totalAnnualSales
+
+
+
+//---------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------
+
+
+// print total annual sales (with the help of utility function)
+void SalesPerson::printAnnualSales()
+{
+	cout << setprecision(2) << fixed << "\nThe total annual sales are: $" << totalAnnualSales() << endl; // call utility function
+} // end function printAnnualSales
+
+
+
+//---------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------
+
+
+
+
+int main()
+{
+
+
+	SalesPerson s; // create SalesPerson object s
+
+	s.getSalesFromUser(); // note simple sequential code; there are
+	s.printAnnualSales(); // no control statements in main
+   
+}
+
+// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
+// Debug program: F5 or Debug > Start Debugging menu
+
+// Tips for Getting Started: 
+//   1. Use the Solution Explorer window to add/manage files
+//   2. Use the Team Explorer window to connect to source control
+//   3. Use the Output window to see build output and other messages
+//   4. Use the Error List window to view errors
+//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
+//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
