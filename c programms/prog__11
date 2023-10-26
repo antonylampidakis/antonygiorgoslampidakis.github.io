@@ -3,13 +3,18 @@
 
 int main()
 {
-   int c, p ;
+
+
+	int c, p ;
 	double kg, ct, tc ;
 
-	printf("Dose katigoria agoras : 1|2|3 \n");
+	printf("Dose katigoria agoras: (1,2,3) \n");
 	scanf("%d",&c);
 
+	while( c==1 || c==2 || c==3 ){
+
 	if (c==1){
+
 		printf("Dose ta kila : \n");
 		scanf("%lf",&kg);
 
@@ -24,6 +29,7 @@ int main()
 		}
 	}
 	else if (c==2){
+
 		printf("Dose temaxia : \n");
 		scanf("%d",&p);
 
@@ -37,16 +43,24 @@ int main()
 			ct=(p*0.60);
 		}
 	}
-	else if (c==3){
-		printf("Agora mono enos temaxioy sta 10 eyro. \n");
+	else {
+		printf("Agora mono enos temaxioy sta 10 eyro \n");
 		ct=10;
 	}
-	else {
-		printf("Exete dosi lathos kodiko katigorias.\n");
-	}
+
+
 
 	tc=(ct+(ct*0.24));
-	printf("To synolo einai : %lf\n",tc);
+
+	printf("To synolo einai : %lf \n",tc);
+	printf("***************************************\n");
+
+	printf("Dose katigoria agoras: (1,2,3) \n");
+	scanf("%d",&c);
+
+
+
+}
 
 	return 0;
 }
