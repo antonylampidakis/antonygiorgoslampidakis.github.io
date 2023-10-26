@@ -1,0 +1,13 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int g=1;
+
+    for ( int i=1; i<=10; i++){
+            g*=i;  //g=g*i
+    }
+    printf("To paragontiko tou deka einai: %d\n", g);
+
+}
