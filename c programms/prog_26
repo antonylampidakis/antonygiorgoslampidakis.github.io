@@ -1,0 +1,44 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+   int array[10];
+   int sum=0;
+   double mo;
+
+
+
+
+    for (int c = 0; c < 10; c++)
+      {
+
+          printf("Dose times ston pinaka: \n");
+          scanf("%d", &array[c]);
+          printf("*****************************************\n");
+
+    }
+
+
+    for (int c2 = 0; c2 <10; c2++)
+      {
+
+          printf("%d\n", array[c2]);
+
+      }
+
+
+      for (int c3 = 0; c3 <10; c3++)
+      {
+
+          sum=sum+array[c3];
+
+      }
+
+      mo=sum/10;
+
+      printf("To athroisma timon einai: %d\n", sum);
+      printf("o mesos oros einai: %lf\n", mo);
+
+    return 0;
+}
