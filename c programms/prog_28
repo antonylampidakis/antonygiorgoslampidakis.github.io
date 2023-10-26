@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+
+    int A[10];
+    int max=A[1];
+    int min=A[1];
+
+    for (int i = 1; i<=10; i++)
+      {
+
+          printf("Dose times ston pinaka A sti thesi: %i \n", i);
+          scanf("%d", &A[i]);
+          printf("*****************************************\n");
+        }
+
+         for (int i = 2; i<=10; i++)
+      {
+
+            if(A[i]>=max){  max=A[i];   }
+      }
+
+        printf("O megistos arithmos ston pinaka A einai: %d \n", max);
+
+        printf("*****************************************\n");
+
+        for (int i=2; i<=10; i++)
+        {
+            if (A[i]<=min){    min=A[i];   }
+        }
+        printf("o mikroteros arithmos ston pinaka A einai: %d \n",min);
+
+    return 0;
+}
