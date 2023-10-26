@@ -1,0 +1,42 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int b;
+    double mo;
+    double max=-999999999;
+    int maxj=1;
+
+for ( int j=1; j<=3; j++){
+
+        printf("Dose bathmous gia to lab: %d \n", j);
+
+        int sum=0;
+
+    for (int i=1; i<=5; i++)
+    {
+
+        printf("Dose bathmo mathimatos: %d \n", i);
+        scanf("%d",& b);
+
+        sum=sum+b;
+    }
+
+    mo=sum/5;
+    printf("O mesos oros einai %lf\n",mo);
+
+    printf("*************************************\n");
+
+    if (mo>max){ 
+        max=mo;
+        maxj=j;
+    }
+
+}
+
+    printf("O megistos mesos oros einai : %lf\n",max);
+    printf("Tou ergastiriou : %d\n",maxj);
+
+    return 0;
+}
