@@ -1,0 +1,88 @@
+//x=xo cos(ot + f)
+
+#include <iostream>
+#include <math.h>
+
+#include <fstream>
+#include <string.h>
+#include <stdlib.h>
+
+using namespace std;
+
+class kimatiki {
+    public:
+        kimatiki(){
+            x0=0.0;
+            o=0.0;
+            t=0.0;
+            f=0;
+        }
+
+        kimatiki(double _x0,double _o , double _t, int _f){
+            x0=_x0;
+            o=_o;
+            t=_t;
+            f=_f;
+        }
+
+        double getx0(){return x0;};
+        double geto(){return o;};
+        double gett(){return t;};
+        int getf(){return f;};
+
+        void setx0(double _x0){x0=_x0;}
+        void seto(double _o){o=_o;}
+        void sett(double _t){t=_t;}
+        void setf(int _f){f=_f;}
+
+        void display(){
+            cout<< "xo="<<x0<<endl;
+            cout<< "0= "<<o<<endl;
+            cout<< "t="<<t<<endl;
+            cout<< "f="<<f<<endl;
+        }
+
+        friend ostream & operator << (ostream& tout , kimatiki k){
+            tout<<"x0="<<k.getx0()<<endl;
+            tout<<"o="<<k.geto()<<endl;
+            tout<<"t="<<k.gett()<<endl;
+            tout<<"f="<<k.getf()<<endl;
+        }
+
+        void print(ostream& tout){
+            tout<<"x0="<<getx0()<<endl;
+            tout<<"o="<<geto()<<endl;
+            tout<<"t="<<gett()<<endl;
+            tout<<"f="<<getf()<<endl;
+
+
+        }
+
+        double sinartisi (){
+
+            return (x0*cos(o*t+f));
+        };
+
+    private:
+        double x0;
+        double o;
+        double t ;
+        int f;
+
+
+};
+
+
+
+
+int main()
+{
+
+
+
+    kimatiki k(5.4,2.1,2.5,4);
+    cout<<k.sinartisi()<<endl;
+    k.display();
+
+    return 0;
+}
