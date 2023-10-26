@@ -1,0 +1,111 @@
+#include <iostream>
+#include <math.h>
+#include <fstream>
+#include <string.h>
+#include <stdlib.h>
+
+using namespace::std;
+
+class FuncN{
+
+public:
+
+    //dimioyrgos
+    FuncN(double _t, double _x, double _k){
+
+        int flag=0;
+        double p=3.14;
+
+        if(_t>0 && _t<(2*p)){
+          t=_t;
+          flag=1;
+        }
+
+        if(_x>-100 && _x<100){
+            x=_x;
+            flag=1;
+        }
+
+        if (_k>0.1 && _k<0.9){
+            k=_k;
+            flag=1;
+        }
+
+        if(flag==0)
+        {
+            t=_t;
+            x=_x;
+            k=_k;
+        }
+
+    }
+
+    //methodoi getters
+    double gett(){return t;};
+    double getx(){return x;};
+    double getk(){return k;};
+
+    //methodoi setters
+    void sett(double _t){t=_t;}
+    void setx(double _x){x=_x;}
+    void setk(double _k){k=_k;}
+
+    //filestream operator
+    friend ostream & operator<<(ostream& tout, FuncN a1){
+        tout<<"T :"<<a1.gett()<<endl;
+        tout<<"X :"<<a1.getx()<<endl;
+        tout<<"k :"<<a1.getk()<<endl;
+
+        tout<<"y :"<<a1.ypologismos()<<endl;
+    }
+
+    //display
+    void display(){
+        cout<<"T :"<<t<<endl;
+        cout<<"X :"<<x<<endl;
+        cout<<"K :"<<k<<endl;
+
+        cout<<"Y="<<ypologismos()<<endl;
+    }
+
+    //print sto arxeio
+    void print(ostream& tout){
+        tout<<"T :"<<gett()<<endl;
+        tout<<"X :"<<getx()<<endl;
+        tout<<"K :"<<getk()<<endl;
+
+        tout<<"Y="<<ypologismos()<<endl;
+    }
+
+    //methodos ypologismoy toy y
+
+    double ypologismos()
+    {
+        double p=3.14;
+        double y;
+
+
+        y=(((0.5)*sin(2*p)/t)-(k*x));
+
+        return y;
+    }
+
+
+private:
+    double t;
+    double x;
+    double k;
+
+
+};
+
+
+int main()
+{
+    FuncN a(4,50,0.2);
+    ofstream f("results.txt");
+    a.display();
+    a.print(f);
+
+    return 0;
+}
