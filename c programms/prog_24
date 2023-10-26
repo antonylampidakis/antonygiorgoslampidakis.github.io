@@ -1,0 +1,18 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int g=1;
+    int num;
+
+    printf("Dose enan akeraio: \n");
+    scanf("%d",&num);
+
+    for ( int i=1; i<=num; i++){
+            g*=i;
+    }
+    printf("To paragontiko tou akeraiou einai: %d\n", g);
+
+    return 0;
+}
