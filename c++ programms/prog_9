@@ -1,0 +1,154 @@
+#include <iostream>
+#include <fstream>
+#include <string.h>
+#include <stdlib.h>
+
+
+using namespace std;
+
+class Rect{
+
+public:
+
+    //dimioyrgos erimin
+    Rect(){
+        x1=0;
+        y1=0;
+        x2=0;
+        y2=0;
+    }
+
+    //dimiourgos
+    Rect(unsigned int _x1, unsigned int _y1, unsigned int _x2, unsigned int _y2){
+        x1=_x1;
+        y1=_y1;
+        x2=_x2;
+        y2=_y2;
+    }
+
+    //methodoi getters
+    unsigned int getx1(){return x1;};
+    unsigned int gety1(){return y1;};
+    unsigned int getx2(){return x2;};
+    unsigned int gety2(){return y2;};
+
+    //methodoi setters
+    void setx1(unsigned int _x1){x1=_x1;}
+    void sety1(unsigned int _y1){y1=_y1;}
+    void setx2(unsigned int _x2){x2=_x2;}
+    void sety2(unsigned int _y2){y2=_y2;}
+
+    //methodoi ypologismoy
+
+    int ypsos(){return (y2-y1);};
+    int platos(){return (x2-x1);};
+
+    int Embadon(){  return(x2-x1)*(y2-y1);};
+
+    int Perimetros (){  return ((2*(x2-x1))+(2*(y2-y1)));};
+
+    int centre_x(){return (x2-x1)/2;};
+    int centre_y(){return (y2-y1)/2;};
+
+
+    //methodos emfanisis dedomenon
+    void display(){
+
+        cout<<"Apo methodo emfanisis dedomenon exo ta exeis :"<<endl;
+
+        cout<<"Embadon gia ton b :"<<Embadon()<<endl;
+
+        cout<<"H Perimetros toy b einai :"<<Perimetros()<<endl;
+
+        cout<<"To ypsos einai :"<<ypsos()<<endl;
+
+        cout<<"To platos einai :"<<platos()<<endl;
+
+        cout<<"H kentriki timi x einai :"<<centre_x()<<endl;
+
+        cout<<"H kentriki timi y einai :"<<centre_y()<<endl;
+    }
+
+    //methodoi egrafis se arxio
+
+        friend ostream & operator<<(ostream& tout, Rect i){
+
+            tout<<"Embadon :"<<i.Embadon()<<endl;
+            tout<<"Perimetros :"<<i.Perimetros()<<endl;
+            tout<<"Ypsos :"<<i.ypsos()<<endl;
+            tout<<"Platos :"<<i.platos()<<endl;
+            tout<<"H kentriki timi x einai :"<<i.centre_x()<<endl;
+            tout<<"H kentriki timi y einai :"<<i.centre_y()<<endl;
+
+        };
+
+
+    //methodos print
+
+        void print(ostream& tout)
+        {
+            tout<<"Apo methodo emfanisis dedomenon exo "<<getx1()<<endl;
+            tout<<"Apo methodo emfanisis dedomenon exo "<<gety1()<<endl;
+
+            tout<<"Apo methodo emfanisis dedomenon exo "<<getx2()<<endl;
+            tout<<"Apo methodo emfanisis dedomenon exo "<<gety2()<<endl;
+
+            tout<<"Embadon :"<< Embadon()<<endl;
+
+            tout<<"H Perimetros  :"<<Perimetros()<<endl;
+
+            tout<<"To ypsos einai :"<<ypsos()<<endl;
+
+            tout<<"To platos einai :"<<platos()<<endl;
+
+            tout<<"H kentriki timi x einai :"<<centre_x()<<endl;
+            tout<<"H kentriki timi y einai :"<<centre_y()<<endl;
+        }
+
+private:
+    unsigned int x1,y1;
+    unsigned int x2,y2;
+
+};
+
+int main()
+{
+    //dimioyrgia antikimenon
+    Rect a,b(2,5,8,15);
+
+
+    cout<<"Embadon :"<<a.Embadon()<<endl;
+    cout<<"Embadon :"<<b.Embadon()<<endl;
+
+    cout<<"***************************************"<<endl;
+
+    cout<<"Perimetros :"<<a.Perimetros()<<endl;
+    cout<<"Perimetros :"<<b.Perimetros()<<endl;
+
+    cout<<"***************************************"<<endl;
+
+    cout<<"Ypsos :"<<a.ypsos()<<endl;
+    cout<<"Ypsos :"<<b.ypsos()<<endl;
+
+    cout<<"***************************************"<<endl;
+
+    cout<<"Platos :"<<a.platos()<<endl;
+    cout<<"Platos :"<<b.platos()<<endl;
+
+    cout<<"***************************************"<<endl;
+
+    cout<<"Kentriki timi toy a gia to x :"<<a.centre_x()<<endl;
+    cout<<"Kentriki timi toy a gia to y :"<<a.centre_y()<<endl;
+
+    cout<<"Kentriki timi toy b gia to x :"<<b.centre_x()<<endl;
+    cout<<"Kentriki timi toy b gia to y :"<<b.centre_y()<<endl;
+
+    cout<<"***************************************"<<endl;
+
+    ofstream f("Rect.txt");
+    b.display();
+    b.print(f);
+
+
+    return 0;
+}
