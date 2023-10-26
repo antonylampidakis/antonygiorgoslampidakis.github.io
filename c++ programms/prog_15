@@ -1,0 +1,247 @@
+#include <iostream>
+#include <string>
+
+
+using namespace std;
+
+class CommissionEmployee{
+
+    public:
+        CommissionEmployee( const string &, const string &, const string &,double = 0.0, double = 0.0 );
+
+
+
+        void setFirstName( const string & ); // set first name
+        string getFirstName() const; // return first name
+
+        void setLastName( const string & ); // set last name
+        string getLastName() const; // return last name
+
+        void setSocialSecurityNumber( const string & ); // set SSN
+        string getSocialSecurityNumber() const; // return SSN
+
+        void setGrossSales( double ); // set gross sales amount
+        double getGrossSales() const; // return gross sales amount
+
+        void setCommissionRate( double ); // set commission rate (percentage)
+        double getCommissionRate() const; // return commission rate
+
+        double earnings() const; // calculate earnings
+        void print() const; // print CommissionEmployee object
+
+    protected:
+        string firstName;
+        string lastName;
+        string socialSecurityNumber;
+        double grossSales; // gross weekly sales
+        double commissionRate; // commission percentage
+
+}; // end class CommissionEmployee
+
+
+
+
+
+// constructor
+CommissionEmployee::CommissionEmployee(
+const string &first, const string &last, const string &ssn, double sales, double rate )
+{
+firstName = first; // should validate
+lastName = last; // should validate
+socialSecurityNumber = ssn; // should validate
+setGrossSales( sales ); // validate and store gross sales
+setCommissionRate( rate ); // validate and store commission rate
+} // end CommissionEmployee
+
+
+
+
+
+// set first name
+void CommissionEmployee::setFirstName( const string &first )
+{
+firstName = first; // should validate
+} // end function setFirstName
+
+
+
+// return first name
+string CommissionEmployee::getFirstName() const
+{
+return firstName;
+} // end function getFirstName
+
+
+
+// set last name
+void CommissionEmployee::setLastName( const string &last )
+{
+lastName = last; // should validate
+} // end function setLastName
+
+
+
+// return last name
+string CommissionEmployee::getLastName() const
+{
+return lastName;
+} // end function getLastName
+
+
+
+
+// set social security number
+ void CommissionEmployee::setSocialSecurityNumber( const string &ssn )
+{
+socialSecurityNumber = ssn; // should validate
+} // end function setSocialSecurityNumber
+
+// return social security number
+string CommissionEmployee::getSocialSecurityNumber() const
+{return socialSecurityNumber;
+} // end function getSocialSecurityNumber
+
+
+
+
+void CommissionEmployee::setGrossSales( double sales )
+{
+if ( sales >= 0.0 )
+grossSales = sales;
+else
+throw invalid_argument( "Gross sales must be >= 0.0" );
+} // end function setGrossSales
+
+double CommissionEmployee::getGrossSales() const
+{
+return grossSales;
+} // en
+
+
+
+// set commission rate
+void CommissionEmployee::setCommissionRate( double rate )
+{
+if ( rate > 0.0 && rate < 1.0 )
+commissionRate = rate;
+else
+throw invalid_argument( "Commission rate must be > 0.0 and < 1.0" );
+} // end function setCommissionRate
+
+// return commission rate
+
+
+
+// return commission rate
+double CommissionEmployee::getCommissionRate() const
+{
+return commissionRate;
+} // end function getCommissionRate
+
+
+double CommissionEmployee::earnings() const
+{
+return commissionRate * grossSales;
+} // end function earnings
+// print CommissionEmployee object
+
+void CommissionEmployee::print() const
+{
+cout << "commission employee: " << firstName << ' ' << lastName
+<< "\nsocial security number: " << socialSecurityNumber
+<< "\ngross sales: " << grossSales
+<< "\ncommission rate: " << commissionRate<<endl;
+} // end function print{
+
+
+class BasePlusCommissionEmployee : public CommissionEmployee
+{
+public:
+
+BasePlusCommissionEmployee( const string &, const string &,
+const string &, double = 0.0, double = 0.0, double = 0.0 );
+
+void setBaseSalary( double ); // set base salary
+double getBaseSalary() const; // return base salary
+
+double earnings() const; // calculate earnings
+void print() const; // print BasePlusCommissionEmployee object
+
+private:
+double baseSalary; // base salary
+
+}; // end class BasePlusCommissionEmployee
+
+
+// constructor
+BasePlusCommissionEmployee::BasePlusCommissionEmployee(
+const string &first, const string &last, const string &ssn, double sales, double rate, double salary )
+: CommissionEmployee( first, last, ssn, sales, rate ) // explicitly call base-class constructor
+
+{
+
+setBaseSalary( salary ); // validate and store base salary
+
+} // end BasePlusCommissionEmployee constructor
+
+
+// set base salary
+void BasePlusCommissionEmployee::setBaseSalary( double salary )
+{
+
+if ( salary >= 0.0 )
+baseSalary = salary;
+else
+throw invalid_argument( "Salary must be >= 0.0" );
+
+} // end function setBaseSalary
+
+// return base salary
+double BasePlusCommissionEmployee::getBaseSalary() const
+{
+return baseSalary;
+} // end function getBaseSalary
+
+// calculate earnings
+double BasePlusCommissionEmployee::earnings() const
+{
+// derived class cannot access the base class’s private data
+return baseSalary +( commissionRate* grossSales );
+} // end function earnings
+
+
+// print BasePlusCommissionEmployee object
+void BasePlusCommissionEmployee::print() const
+{
+cout<<"base-salaried commission employee:" <<endl;
+cout<<"Name :"<<firstName<<endl;
+cout<<"Lastname :"<< lastName<<endl;
+cout<<"Social security number: "<< socialSecurityNumber<<endl;
+cout<<"Gross sales: " << grossSales<<endl;
+cout<<"Commission rate: " << commissionRate<<endl;
+cout<<"Base salary: " << baseSalary<<endl;
+
+} // end function print
+
+
+int main()
+{
+    CommissionEmployee employee("Antonis", "Lampidakis", "222-22-2222", 10000, .06 );
+
+    BasePlusCommissionEmployee employee2( "Damianos", "Ougkrenidis", "333-33-3333", 5000, .04, 300 );
+
+
+
+    cout<<"The Employee Earnings::"<<employee.earnings()<<endl;
+    cout<<endl;
+    cout<<endl;
+    employee.print();
+    cout<<endl;
+    cout<<endl;
+    cout<<"The BasePlusCommission Employee Earnings::"<<employee.earnings()<<endl;
+    cout<<endl;
+    cout<<endl;
+    employee2.print();
+
+    return 0;
+}
