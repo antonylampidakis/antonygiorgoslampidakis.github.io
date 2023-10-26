@@ -1,0 +1,47 @@
+#include <iostream>
+
+using namespace std;
+
+
+class Person {
+
+private:
+
+    string onoma ;
+    string epitheto ;
+    int id;
+    int year ;
+
+public:
+    Person(){onoma="";
+        epitheto="";
+        id=0;
+        year=0;};
+
+    Person(string on,string ep,int i,int y){
+        onoma=on;
+        epitheto=ep;
+        id=i;
+        year=y;
+    };
+
+    void display (){
+        cout<<"Onoma :"<<onoma<<endl;
+        cout<<"epitheto :"<<epitheto<<endl;
+        cout<<"ID :"<<id<<endl;
+        cout<<"Year :"<<year<<endl;
+
+    }
+
+
+
+};
+
+int main()
+{
+    Person p1("Antony","Lampidakis",1,2004 );
+
+    p1.display();
+
+    return 0;
+}
