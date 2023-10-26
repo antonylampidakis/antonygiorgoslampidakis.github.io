@@ -1,0 +1,113 @@
+#include <iostream>
+#include <fstream>
+#include <string.h>
+#include <stdlib.h>
+
+
+using namespace std;
+
+class  Antena{
+
+public:
+    //dimiourgia erimin
+    Antena(){
+        frin=0.0;
+        frout=0.0;
+        vt=0.0;
+        enca=0.0;
+        entl=0;
+    }
+
+    //dimioyrgos
+    Antena(double _frin, double _frout, double _vt, double _enca, int _entl ){
+        frin= _frin;
+        frout=_frout;
+        vt=_vt;
+        enca=_enca;
+        entl=_entl;
+    }
+
+    //methodoi getters
+    double getfrin(){return frin;};
+    double getfrout(){return frout;};
+    double getvt(){return vt;};
+    double getenca(){return enca;};
+    int getentl(){return entl;};
+
+
+    //methodoi setters
+    void setfrin(double _frin){frin=_frin;}
+    void setfrout(double _frout){frout=_frout;}
+    void setvt(double _vt){vt=_vt;}
+    void setenca(double _enca){enca=_enca;}
+    void setentl(int _entl){entl=_entl;}
+
+
+    //display
+    void display(){
+        cout<<"Sixnotita eisodoy:"<<frin<<endl;
+        cout<<"Sixnotita exodoy  :"<<frout<<endl;
+        cout<<"Voltage :"<<vt<<endl;
+        cout<<"Energy capacity :"<<enca<<endl;
+        cout<<"Energy time life :"<<entl<<endl;
+    }
+
+    //filestream operator
+    friend ostream & operator<<(ostream& tout, Antena a1){
+        tout<<"Sixnotita eisodoy :"<<a1.getfrin()<<endl;
+        tout<<"Sixnotita exodoy  :"<<a1.getfrout()<<endl;
+        tout<<"Voltage :"<<a1.getvt()<<endl;
+        tout<<"Energy capacity "<<a1.getenca()<<endl;
+        tout<<"Energy time life :"<<a1.getentl()<<endl;
+    }
+
+    //methodos egrafis se arxeio
+    void print(ostream& tout){
+        tout<<"Sixnotita eisodoy "<<getfrin()<<endl;
+        tout<<"Sixnotita exodoy  :"<<getfrout()<<endl;
+        tout<<"Voltage :"<<getvt()<<endl;
+        tout<<"Energy capacity "<<getenca()<<endl;
+        tout<<"Energy time life :"<<getentl()<<endl;
+    }
+
+private:
+        double frin;
+        double frout;
+        double vt;
+        double enca; //energy capacity
+        int entl;   //energy time life
+
+};
+
+
+int main()
+{
+    //dimioyrgia arxeioy
+    ofstream f("Antena.txt");
+
+    //dimioyrgia antikimenoy
+    Antena a1(23.24,25.56,45.12,78.2,12),a2;
+
+
+    a1.display();
+    a1.print(f);
+    cout<<"**************************************"<<endl;
+
+    //////////////////////////////////////////////////////
+
+    a2.setfrin(25.26);
+    a2.setfrout(25.36);
+    a2.setvt(26.32);
+    a2.setenca(27.23);
+    a2.setentl(12);
+
+    //////////////////////////////////////////////////////
+
+    cout<<"Sixnotita eisodoy :"<<a2.getfrin()<<endl;
+    cout<<"Sixnotita exodoy :"<<a2.getfrout()<<endl;
+    cout<<"Voltage :"<<a2.getvt()<<endl;
+    cout<<"Energy capacity :"<<a2.getenca()<<endl;
+    cout<<"Energy time life :"<<a2.getentl()<<endl;
+
+    return 0;
+}
