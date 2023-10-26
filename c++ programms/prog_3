@@ -1,0 +1,56 @@
+#include <iostream>
+#include <math.h>
+
+using namespace :: std;
+
+class Rec
+{
+private:
+        double xco;
+        double yco;
+public:
+       Rec(){xco=0,0; yco=0,0;}
+       Rec(double x, double y){xco=x; yco=y;}
+       void display()
+       {
+        cout<<"(" <<xco<<","<<yco<<")";
+       }
+};
+
+class Polar
+{
+private:
+        double radius;
+        double angle;
+public:
+       Polar(){radius=0,0; angle=0,0;}
+
+       Polar(double r, double a){radius=r; angle=a;}
+
+       void display(){
+        cout<<"("  <<radius<<","<<angle<<")";
+       }
+
+       operator Rec()
+       {
+         double x=radius*cos(angle);
+         double y=radius*sin(angle);
+         return Rec(x,y);
+       }
+};
+
+
+main()
+{
+  int d;
+  Rec rec;
+  Polar pol(10 , 0.783598);
+  rec=pol;
+
+  cout<<"nPol="; pol.display();
+  cout<<endl;
+  cout<<"nrec="; rec.display();
+
+  cin>>d;
+
+}
