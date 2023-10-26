@@ -1,0 +1,384 @@
+#include <iostream>
+#include <string>
+#include <fstream>
+#include <stdlib.h>
+
+using namespace::std;
+
+class Cpu {
+
+	public:
+		Cpu(const string&, const string&, int = 0, int = 0, int = 0);
+
+		void setCompany(const string &);
+		string getCompany() const;
+
+		void setCpuId(const string &);
+		string getCpuId() const;
+
+		void setCores(int);
+		int getCores() const;
+
+		void setThreads(int);
+		int getThreads() const;
+
+		void setFrequency(int);
+		int getFrequency() const;
+
+		void print() const;
+
+	protected:
+
+		string Company;		//cmp
+		string CpuId;		//cid
+		int Cores;			//cr
+		int Threads;		//thr
+		int Frequency;	    //frq
+
+};
+
+//constructor
+Cpu::Cpu(const string& cmp, const string& cid, int cr, int thr, int frq) 
+{
+	Company = cmp;
+	CpuId = cid;
+	Cores = cr;
+	Threads = thr;
+	Frequency = frq;
+
+}
+
+// set company
+void Cpu::setCompany(const string &cmp)
+{
+	Company = cmp;
+}
+
+//return Company
+string Cpu::getCompany() const
+{
+	return Company;
+}
+
+//set CpuId
+void Cpu::setCpuId(const string &cid)
+{
+	CpuId = cid;
+}
+
+//Return CpuId
+string Cpu::getCpuId() const
+{
+	return CpuId;
+}
+
+//Set cores
+void Cpu::setCores(int cr)
+{
+	Cores = cr;
+}
+
+//Return cores
+int Cpu::getCores() const
+{
+	return Cores;
+}
+
+//Set Threads
+void Cpu::setThreads(int thr)
+{
+	Threads = thr;
+}
+
+//Return Threads
+int Cpu::getThreads() const
+{
+	return Threads;
+}
+
+//set Frequnecy 
+void Cpu::setFrequency(int frq)
+{
+	Frequency = frq;
+}
+
+//Return Frequnecy
+int  Cpu::getFrequency() const
+{
+	return Frequency;
+}
+
+void Cpu::print() const
+{
+	cout << "Company :" << Company << endl;
+	cout << "CpuId :" << CpuId << endl;
+	cout << "Cores :" << Cores << endl;
+	cout << "Threads :" << Threads << endl;
+	cout << "Frequency :" << Frequency << endl;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
+class Plc : public Cpu
+{
+	public:
+		Plc(const string&, const string&, int = 0, int = 0, int = 0, int = 0);
+
+		void setSlots(int);
+		int getSlots() const;
+
+		void print() const;
+
+		//Filestream 
+
+		friend iostream& operator <<(ostream& tout, Plc i) {
+			tout << "Company :" <<i.Company << endl;
+			tout << "CpuId :" << i.CpuId << endl;
+			tout << "Cores :" << i.Cores << endl;
+			tout << "Threads :" << i.Threads << endl;
+			tout << "Frequency :" << i.Frequency << endl;
+			tout << "Slots :" << i.Slots << endl;
+		}
+
+		void FilePrint(ostream& tout) {
+			tout << "Company :" << getCompany() << endl;
+			tout << "CpuId :" << getCpuId() << endl;
+			tout << "Cores :" << getCores() << endl;
+			tout << "Threads :" << getThreads() << endl;
+			tout << "Frequency :" << getFrequency() << endl;
+			tout << "Slots :" << getSlots() << endl;
+ 		}
+
+	protected:
+		int Slots;   //st
+
+};
+
+//constructor
+Plc::Plc(const string& cmp, const string& cid, int cr, int thr, int frq, int st):Cpu (cmp, cid, cr, thr, frq) {
+	
+	setSlots(st);
+}
+
+void Plc::setSlots(int st) {
+	Slots = st;
+}
+
+int Plc::getSlots() const
+{
+	return Slots;
+}
+
+void Plc::print() const
+{
+	cout << "Company :" << Company << endl;
+	cout << "CpuId :" << CpuId << endl;
+	cout << "Cores :" << Cores << endl;
+	cout << "Threads :" << Threads << endl;
+	cout << "Frequency :" << Frequency << endl;
+	cout << "Slots :" << Slots << endl;
+}
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
+
+class DKit : public Plc {
+public:
+	DKit(const string&, const string&, int = 0, int = 0, int = 0, int = 0, int = 0);
+
+	void setRom(int);
+	int getRom() const;
+
+	void print() const;
+
+	//Filestream 
+
+	friend iostream& operator <<(ostream& tout, DKit i) {
+		tout << "Company :" << i.Company << endl;
+		tout << "CpuId :" << i.CpuId << endl;
+		tout << "Cores :" << i.Cores << endl;
+		tout << "Threads :" << i.Threads << endl;
+		tout << "Frequency :" << i.Frequency << endl;
+		tout << "Slots :" << i.Slots << endl;
+		tout << "ROM :" << i.Rom << endl;
+	}
+
+	void FilePrint(ostream& tout) {
+		tout << "Company :" << getCompany() << endl;
+		tout << "CpuId :" << getCpuId() << endl;
+		tout << "Cores :" << getCores() << endl;
+		tout << "Threads :" << getThreads() << endl;
+		tout << "Frequency :" << getFrequency() << endl;
+		tout << "Slots :" << getSlots() << endl;
+		tout << "Rom :" << getRom() << endl;
+	}
+
+protected:
+	int Rom;		//rm
+};
+
+//constructor
+DKit::DKit(const string& cmp, const string& cid, int cr, int thr, int frq, int st, int rm) :Plc(cmp, cid, cr, thr, frq, st) {
+
+	setRom(rm);
+}
+
+void DKit::setRom(int rm) {
+	Rom = rm;
+}
+
+int DKit::getRom() const
+{
+	return Rom;
+}
+
+void DKit::print() const
+{
+	cout << "Company :" << Company << endl;
+	cout << "CpuId :" << CpuId << endl;
+	cout << "Cores :" << Cores << endl;
+	cout << "Threads :" << Threads << endl;
+	cout << "Frequency :" << Frequency << endl;
+	cout << "Slots :" << Slots << endl;
+	cout << "Rom :" << Rom << endl;
+
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
+
+
+class Invoice : public DKit
+{
+public:
+	Invoice(const string&, const string&, int = 0, int = 0, int = 0, int = 0, int = 0, int=0, int=0);
+
+	void setQuantity(int);
+	int getQuantity() const;
+
+	void setCost(int);
+	int getCost() const;
+
+	int TotalCost() const;
+	
+	void  print() const;
+
+	//Filestream 
+
+	friend iostream& operator <<(ostream& tout, Invoice i) {
+		tout << "Company :" << i.Company << endl;
+		tout << "CpuId :" << i.CpuId << endl;
+		tout << "Cores :" << i.Cores << endl;
+		tout << "Threads :" << i.Threads << endl;
+		tout << "Frequency :" << i.Frequency << endl;
+		tout << "Slots :" << i.Slots << endl;
+		tout << "ROM :" << i.Rom << endl;
+		tout << "Quantity :" << i.Quantity << endl;
+		tout << "Cost :" << i.Cost << endl;
+		tout << "Total cost :" << i.TotalCost() << endl;
+
+	}
+
+	void FilePrint(ostream& tout) {
+		tout << "Company :" << getCompany() << endl;
+		tout << "CpuId :" << getCpuId() << endl;
+		tout << "Cores :" << getCores() << endl;
+		tout << "Threads :" << getThreads() << endl;
+		tout << "Frequency :" << getFrequency() << endl;
+		tout << "Slots :" << getSlots() << endl;
+		tout << "Rom :" << getRom() << endl;
+		tout << "Quantity :" << getQuantity() << endl;
+		tout << "Cost :" << getCost() << endl;
+		tout << "Total cost :" << TotalCost() << endl;
+	}
+
+
+
+private:
+	int Quantity;    //qty
+	int Cost;        //ct
+};
+
+
+//constructor
+Invoice::Invoice(const string& cmp, const string& cid, int cr, int thr, int frq, int st, int rm, int qty, int ct ) :DKit(cmp, cid, cr, thr, frq, st, rm) {
+
+	setQuantity(qty);
+	setCost(ct);
+
+}
+
+
+void Invoice::setQuantity(int qty) {
+	Quantity= qty;
+}
+
+int Invoice::getQuantity() const
+{
+	return Quantity;
+}
+
+void Invoice::setCost(int ct) {
+	Cost = ct;
+}
+
+int Invoice::getCost() const
+{
+	return Cost;
+}
+
+int  Invoice::TotalCost() const
+{
+	return (Cost * Quantity);
+}
+
+void Invoice::print() const
+{
+	cout << "Company :" << Company << endl;
+	cout << "CpuId :" << CpuId << endl;
+	cout << "Cores :" << Cores << endl;
+	cout << "Threads :" << Threads << endl;
+	cout << "Frequency :" << Frequency << endl;
+	cout << "Slots :" << Slots << endl;
+	cout << "Rom :" << Rom << endl;
+	cout << "Quantity :" << Quantity << endl;
+	cout << "Piece cost :" << Cost << endl;
+	cout << "___________________________________________" << endl;
+	cout << "Total cost :" << TotalCost() << endl;
+
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
+int main()
+{
+	Cpu intel("i9", "12Th_Gen", 16, 14, 4);
+	Plc siemens("i7", "10Th_Gen", 16, 14, 4, 2);
+	DKit atmel("i5", "6Th_Gen", 8, 12, 4, 2, 1024);
+	Invoice stk("i3", "4Th_Gen", 4, 12, 4, 2, 1024, 500, 125);
+
+	ofstream f("Electronics.txt");
+	siemens.FilePrint(f);
+
+	ofstream f1("Electronics2.txt");
+	atmel.FilePrint(f1);
+
+	ofstream f2("Invoice.txt");
+	stk.FilePrint(f2);
+
+	intel.print();
+	cout << "*************************************" << endl;
+	cout << "*************************************" << endl;
+	siemens.print();
+	cout << "*************************************" << endl;
+	cout << "*************************************" << endl;
+	atmel.print();
+	cout << "*************************************" << endl;
+	cout << "*************************************" << endl;
+	stk.print();
+	
+
+
+}
+
