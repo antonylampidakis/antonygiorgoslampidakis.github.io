@@ -1,0 +1,168 @@
+#include <iostream>
+#include <string>
+#include <fstream>
+#include <stdlib.h>
+
+using namespace::std;
+
+class Programatistis {
+
+public:
+    Programatistis(const string&, const string&, int = 0, int = 0);
+
+    void setFirstName(const string&);
+    string getFirstName() const;
+
+    void setLastName(const string&);
+    string getLastName() const;
+
+    void  setIdnumer(int);
+    int getIdnumer() const;
+
+    void setIlikia(int);
+    int getIlikia() const;
+
+    void print() const;
+
+protected:
+    string Firstname;    //first
+    string Lastname;    //last
+    int Idnumer;        //id
+    int Ilikia;         //year
+};
+
+//constructor
+Programatistis::Programatistis(const string& first, const string& last, int id, int year)
+{
+    Firstname = first;
+    Lastname = last;
+    Idnumer = id;
+    Ilikia = year;
+
+}
+
+void Programatistis::setFirstName(const string &first)
+{
+    Firstname = first;
+}
+
+string Programatistis::getFirstName()const
+{
+    return Firstname;
+}
+
+void Programatistis::setLastName(const string &last)
+{
+    Lastname = last;
+}
+
+string Programatistis::getLastName()const
+{
+    return  Lastname;
+}
+
+void Programatistis::setIdnumer(int id)
+{
+    Idnumer = id;
+}
+
+int Programatistis::getIdnumer() const
+{
+    return Idnumer;
+}
+
+
+
+void Programatistis::setIlikia(int year)
+{
+    Ilikia = year;
+}
+
+
+int Programatistis::getIlikia() const
+{
+    return Ilikia;
+}
+
+void Programatistis::print() const
+{
+    cout << "Name  :" << Firstname << endl;
+    cout << "Lastname :" << Lastname << endl;
+    cout << "Id :" << Idnumer << endl;
+    cout << "Ilikia  :" << Ilikia << endl;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
+class Mixanikos : public Programatistis
+{
+public:
+    Mixanikos(const string&, const string&, int = 0, int = 0, int = 0);
+
+    void setepiskeyes(int);
+    int getepiskeyes() const;
+
+    void print() const;
+
+    friend iostream& operator << (ostream& tout, Mixanikos i) {
+        tout << "Name  :" << i.Firstname << endl;
+        tout << "Lastname :" << i.Lastname << endl;
+        tout << "Id :" << i.Idnumer << endl;
+        tout << "Ilikia  :" << i.Ilikia << endl;
+        tout << "Episkeyes :" << i.episkeyes << endl;
+    }
+
+    void FilePrint(ostream& tout) {
+        tout << "Name  :" << getFirstName() << endl;
+        tout << "Lastname :" << getLastName() << endl;
+        tout << "Id :" << getIdnumer() << endl;
+        tout << "Ilikia  :" << getIlikia() << endl;
+        tout << "Episkeyes :" << getepiskeyes() << endl;
+    }
+
+
+private:
+    int episkeyes; //repair
+
+};
+
+//constructor
+Mixanikos::Mixanikos(const string& first, const string& last, int id, int year, int repair) :Programatistis(first, last, id, year)
+{
+    setepiskeyes(repair);
+
+}
+
+void Mixanikos::setepiskeyes(int repair) {
+    episkeyes = repair;
+}
+
+int Mixanikos::getepiskeyes() const
+{
+    return episkeyes;
+}
+void Mixanikos::print() const
+{
+    cout << "Name :" << Firstname << endl;
+    cout << "Lastname :" << Lastname << endl;
+    cout << "Id :" << Idnumer << endl;
+    cout << "Ilikia :" << Ilikia << endl;
+    cout << "Episkeyes :" << episkeyes << endl;
+
+}
+
+int main()
+{
+    Programatistis p1("Antony", "Lampidakis", 1, 19);
+    Mixanikos m1("Giannis", "papadopoylos", 2, 22, 20);
+
+    ofstream f("Results.txt");
+    m1.FilePrint(f);
+
+    p1.print();
+    cout << "*************************************" << endl;
+    cout << "*************************************" << endl;
+    m1.print();
+
+    return 0;
+}
