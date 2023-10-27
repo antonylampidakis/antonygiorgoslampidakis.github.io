@@ -35,3 +35,4 @@ B) Επικοινωνια μεσο sosial media :
      -   Εθελοντης Δασοπιροσβεστης (ΔΑΠΑΧΟ Δασοπροστασια Παπαγου Χολαργου)
      -   Motosports
      -   
+<img title=HTML src=https://github.com/devicons/devicon/blob/master/icons/python/python-original.svg width=60 height=60>
