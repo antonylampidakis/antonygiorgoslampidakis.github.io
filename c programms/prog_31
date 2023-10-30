@@ -1,0 +1,101 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    double t, kg, tc ;
+    int c, m;
+
+for(int i=1; i<=5; i++){
+
+    printf("OMADA : %d \n", i);
+    printf("**************************************\n");
+
+    for(int j=0; j<10; j++)
+    {
+
+    printf("dose katigoria proiontos: \n");
+    scanf("%d", &c);
+
+    if(c==1)
+    {
+        printf("dose kila: \n");
+        scanf("%lf", &kg);
+
+        if (kg>=1 && kg<=1000)
+        {
+            tc=(kg*0.22);
+            t=tc+(tc*0.24);
+            printf("to teliko kostos einai : %lf \n", t);
+            printf("**************************************\n");
+        }
+
+        else if (kg>=1001 && kg<=2000)
+        {
+            tc=(kg*0.25);
+            t=tc+(tc*0.24);
+            printf("to teliko kostos einai : %lf \n", t);
+            printf("**************************************\n");
+        }
+
+        else
+        {
+             tc=(kg*0.27);
+             t=tc+(tc*0.24);
+             printf("to teliko kostos einai : %lf \n", t);
+             printf("**************************************\n");
+        }
+
+
+    }
+
+    else if (c==2)
+    {
+       printf("dose arithmo temaxion :\n");
+       scanf("%d", &m);
+
+       if (m>=1 && m<=1000)
+       {
+           tc=(m*0.36);
+           t=tc+(tc*0.24);
+           printf("to teliko kostos einai : %lf \n", t);
+           printf("**************************************\n");
+       }
+       else if(m>=1001 && m<=2000)
+       {
+           tc=(m*0.48);
+           t=tc+(tc*0.24);
+           printf("to teliko kostos einai : %lf \n", t);
+           printf("**************************************\n");
+       }
+       else
+       {
+           tc=(m*0.6);
+           t=tc+(tc*0.24);
+           printf("to teliko kostos einai : %lf \n", t);
+           printf("**************************************\n");
+       }
+    }
+
+    else if(c==3)
+    {
+        tc=10;
+        t=tc+(tc*0.24);
+        printf("to teliko kostos einai : %lf \n", t);
+        printf("**************************************\n");
+    }
+    else
+    {
+        printf("dosate lathos katigoria - ERROR ");
+        t=0;
+        printf("to teliko kostos einai : %lf \n", t);
+        printf("**************************************\n");
+    }
+
+
+
+
+}//for2
+}//for1
+    return 0;
+}//main
