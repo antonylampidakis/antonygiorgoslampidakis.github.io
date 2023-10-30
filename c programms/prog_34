@@ -1,0 +1,58 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int x;
+
+    int c1=0, c2=0, c3=0;
+    double p1, p2, p3;
+
+
+    int i=0;
+    while (i<=10)
+
+    {
+        printf ("Dose arithmo x: \n");
+        scanf ("%d", &x);
+
+        if (x%2==0)
+
+        {
+
+            c1=c1+1;
+        }
+
+        if (x%2==1)
+
+        {
+
+            c2=c2+1;
+        }
+
+        if (x==0)
+
+        {
+
+            c3=c3+1;
+        }
+
+
+        i++;
+
+
+    }
+
+    p1=(c1*100)/10;
+     p2=(c2*100)/10;
+      p3=(c3*100)/10;
+
+
+    printf (" To pososto twn zygwn einai: %lf\n", p1);
+    printf (" To pososto twn perittwn einai: %lf\n", p2);
+    printf (" To pososto twn midenikon einai: %lf\n", p3);
+
+
+
+    return 0;
+}
