@@ -1,0 +1,238 @@
+#include <iostream>
+#include <string>
+#include <fstream>
+
+
+using namespace std;
+
+class CommissionEmployee{
+
+    public:
+        CommissionEmployee( const string &, const string &, const string &,double = 0.0, double = 0.0 );
+
+        void setFirstName( const string & ); // set first name
+        string getFirstName() const; // return first name
+
+        void setLastName( const string & ); // set last name
+        string getLastName() const; // return last name
+
+        void setSocialSecurityNumber( const string & ); // set SSN
+        string getSocialSecurityNumber() const; // return SSN
+
+        void setGrossSales( double ); // set gross sales amount
+        double getGrossSales() const; // return gross sales amount
+
+        void setCommissionRate( double ); // set commission rate (percentage)
+        double getCommissionRate() const; // return commission rate
+
+        double earnings() const; // calculate earnings
+        void print() const; // print CommissionEmployee object
+
+    protected:
+        string firstName;
+        string lastName;
+        string socialSecurityNumber;
+        double grossSales; // gross weekly sales
+        double commissionRate; // commission percentage
+
+}; // end class CommissionEmployee
+
+
+
+
+
+// constructor
+CommissionEmployee::CommissionEmployee(
+const string &first, const string &last, const string &ssn, double sales, double rate )
+{
+	firstName = first; // should validate
+	lastName = last; // should validate
+	socialSecurityNumber = ssn; // should validate
+	setGrossSales( sales ); // validate and store gross sales
+	setCommissionRate( rate ); // validate and store commission rate
+} // end CommissionEmployee
+
+
+
+
+
+// set first name
+void CommissionEmployee::setFirstName( const string &first )
+{
+firstName = first; // should validate
+} // end function setFirstName
+
+
+
+// return first name
+string CommissionEmployee::getFirstName() const
+{
+return firstName;
+} // end function getFirstName
+
+
+
+// set last name
+void CommissionEmployee::setLastName( const string &last )
+{
+lastName = last; // should validate
+} // end function setLastName
+
+
+
+// return last name
+string CommissionEmployee::getLastName() const
+{
+return lastName;
+} // end function getLastName
+
+
+
+
+// set social security number
+ void CommissionEmployee::setSocialSecurityNumber( const string &ssn )
+{
+socialSecurityNumber = ssn; // should validate
+} // end function setSocialSecurityNumber
+
+// return social security number
+string CommissionEmployee::getSocialSecurityNumber() const
+{return socialSecurityNumber;
+} // end function getSocialSecurityNumber
+
+
+
+
+void CommissionEmployee::setGrossSales( double sales )
+{
+if ( sales >= 0.0 )
+grossSales = sales;
+else
+throw invalid_argument( "Gross sales must be >= 0.0" );
+} // end function setGrossSales
+
+double CommissionEmployee::getGrossSales() const
+{
+return grossSales;
+} // en
+
+
+
+// set commission rate
+void CommissionEmployee::setCommissionRate( double rate )
+{
+if ( rate > 0.0 && rate < 1.0 )
+commissionRate = rate;
+else
+throw invalid_argument( "Commission rate must be > 0.0 and < 1.0" );
+} // end function setCommissionRate
+
+// return commission rate
+
+
+
+// return commission rate
+double CommissionEmployee::getCommissionRate() const
+{
+return commissionRate;
+} // end function getCommissionRate
+
+
+double CommissionEmployee::earnings() const
+{
+return commissionRate * grossSales;
+} // end function earnings
+// print CommissionEmployee object
+
+void CommissionEmployee::print() const
+{
+cout << "commission employee: " << firstName << ' ' << lastName
+<< "\nsocial security number: " << socialSecurityNumber
+<< "\ngross sales: " << grossSales
+<< "\ncommission rate: " << commissionRate<<endl;
+} // end function print{
+
+
+
+class SoftwareEmp : public  CommissionEmployee{
+
+/*
+
+*/
+    public :
+        SoftwareEmp(const string &first, const string &last , const string &ssn , double sales , double rate ,int _id, int _prcode ):CommissionEmployee(first,last ,ssn ,sales ,rate)
+        {
+            firstName = first; // should validate
+            lastName = last; // should validate
+            socialSecurityNumber = ssn; // should validate
+            setGrossSales( sales ); // validate and store gross sales
+            setCommissionRate( rate ); // validate and store commission rate
+            id=_id;
+            prcode=_prcode;
+        }
+
+        void setid(int _id){id=_id;}
+        int getid(){return id;};
+
+        void setprcode (int _prcode){prcode=_prcode;}
+        int getprcode(){return prcode;};
+
+
+        void display(){
+            cout<<"First Name :"<<firstName<<endl;
+            cout<<"Last Name :"<<lastName<<endl;
+            cout<<"Social Security Number :"<<socialSecurityNumber<<endl;
+            cout<<"Gross Sales : "<<grossSales<<endl;
+            cout<<"Commission Rate :"<<commissionRate<<endl;
+            cout<<"Id :"<<id<<endl;
+            cout<<"Prcode :"<<prcode<<endl;
+        }
+
+        friend ostream & operator << (ostream& tout, SoftwareEmp  i){
+            tout<<"First Name :"<<i.firstName<<endl;
+            tout<<"Last Name :"<< i.lastName<<endl;
+            tout<<"Social Security Number :"<<i.socialSecurityNumber<<endl;
+            tout<<"Gross Sales : "<<i.grossSales<<endl;
+            tout<<"Commission Rate :"<<i.commissionRate<<endl;
+            tout<<"Id :"<<i.id<<endl;
+            tout<<"Prcode :"<<i.prcode<<endl;
+
+        }
+
+        void print2(ostream& tout){
+            tout<<"First Name :"<<getFirstName()<<endl;
+            tout<<"Last Name :"<< getLastName()<<endl;
+            tout<<"Social Security Number :"<<getSocialSecurityNumber()<<endl;
+            tout<<"Gross Sales : "<<getGrossSales()<<endl;
+            tout<<"Commission Rate :"<<getCommissionRate()<<endl;
+            tout<<"Id :"<<getid()<<endl;
+            tout<<"Prcode :"<<getprcode()<<endl;
+        }
+
+
+    private :
+        int id;
+        int prcode;
+
+};
+
+
+
+int main()
+{
+    CommissionEmployee employee("Antonis", "Lampidakis", "222-22-2222", 10000, .06 );
+    SoftwareEmp s("Damianos","Ougkrenidis","333-33-3333",2000, 1.3, 1222, 57);
+
+    cout<<"The Employee Earnings::"<<employee.earnings()<<endl;
+    cout<<endl;
+    cout<<endl;
+    employee.print();
+    cout<<"***************************************"<<endl;
+    s.display();
+
+    ofstream f("Data.txt");
+    s.print2(f);
+
+
+    return 0;
+}
