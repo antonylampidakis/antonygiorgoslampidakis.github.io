@@ -1,0 +1,99 @@
+#include <iostream>
+#include <fstream>
+#include <string.h>
+#include <stdlib.h>
+
+using namespace std;
+const int SZ = 300;
+
+
+
+class Invoice {
+
+public:
+
+    //dhmiourgos erimin
+    Invoice() {
+
+        comn[0] = '\0';
+        ad[0] = '\0';
+        afm = 0;
+        cost = 0.0;
+        vat = 0.0;
+
+    }
+
+    //dhmiourgos
+    Invoice(char _comn[], char _ad[], int _afm, double _cost, double _vat) {
+
+        strcpy(comn, _comn);
+        strcpy(ad, _ad);
+        afm = _afm;
+        cost = _cost;
+        vat = _vat;
+
+    }
+
+    //metodoi getters
+    char* getcomn() { return comn; };
+    char* getad() { return ad; };
+    int getafm() { return afm; };
+    double getcost() { return cost; };
+    double getvat() { return vat; };
+
+    void display()
+    {
+        cout << "Company name:" << comn << endl;
+        cout << "Address:" << ad << endl;
+        cout << "AFM :" << afm << endl;
+        cout << "Cost :" << cost << endl;
+        cout << "vat:" << vat << endl;
+
+    }
+
+    //methodos emfanisis
+    void print(ostream& tout)
+    {
+        tout << "Company name:" << getcomn() << endl;
+        tout << "Address:" << getad() << endl;
+        tout << "AFM:" << getafm() << endl;
+        tout << "Cost :" << getcost() << endl;
+        tout << "Vat:" << getvat() << endl;
+
+    };
+
+    //epifortosi telesti gia methodo emfanisis se arxeio
+    friend ostream& operator<<(ostream& tout, Invoice i)
+    {
+        tout << "Company name:" << i.getcomn() << endl;
+        tout << "Address:" << i.getad() << endl;
+        tout << "AFM:" << i.getafm() << endl;
+        tout << "Cost :" << i.getcost() << endl;
+        tout << "Vat :" << i.getvat() << endl;
+    };
+
+
+
+private:
+    char comn[SZ];
+    char ad[SZ];
+    int afm;
+    double cost;
+    double vat;
+};
+
+
+int main()
+{
+
+
+    //dimiourgia arxeiou
+    ofstream f("Invoice.txt");
+
+    //dimiourgia antikeimenou
+    Invoice i("Intracom", "Paiania", 116681, 1330.0, 0.24);
+
+    i.display();
+    i.print(f);
+    return 0;
+}
