@@ -1,0 +1,25 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+
+    double a, b, c;
+
+    printf("Dose ton arithmo a: \n");
+    scanf ("%lf", &a);
+
+    printf("Dose ton arithmo b: \n");
+    scanf ("%lf", &b);
+
+    printf("Dose ton arithmo c: \n");
+    scanf ("%lf", &c);
+
+    if (a>b && a>c) {printf("O a einai o megaliteros apo tous treis \n");}
+    else if (b>a && b>c) {printf("O b einai o megaliteros apo tous treis \n");}
+    else {printf ("O c einai o megaliteros apo tous treis \n");}
+
+
+
+    return 0;
+}
