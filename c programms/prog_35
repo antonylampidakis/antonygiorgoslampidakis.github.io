@@ -1,0 +1,51 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+   int A[10];
+
+   int cz=0;
+   int cm=0;
+   int z=0;
+
+   double p1,p2,p3;
+
+   for (int i=0; i<=10; i++)
+   {
+       printf("Dose arithmo : \n");
+       scanf("%d",&A[i]);
+   }
+
+
+    for (int i=0; i<10; i++)
+   {
+
+        if ( A[i]%2==0){   cz++;  }
+
+        else if (A[i]%2==1){  cm++;   }
+
+        else { z++; }
+
+   }
+
+
+
+    p1=(cz*100)/10;
+
+    p2=(cm*100)/10;
+
+    p3=(z*100)/10;
+
+
+    printf("To pososto ton zygon einai : %lf\n",p1);
+    printf("To pososto ton monon einai : %lf\n",p2);
+    printf("To pososto ton midenikon einai : %lf\n",p3);
+
+
+
+
+
+
+    return 0;
+}
